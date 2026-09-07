@@ -149,12 +149,13 @@
   .onestop .oshead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:34px}
   .onestop .oshead .tag{font-family:var(--f-body);font-weight:700;letter-spacing:.16em;font-size:12px;color:var(--brass-soft);border:1px solid var(--brass);border-radius:2px;padding:5px 12px}
   .onestop .oshead h3{font-size:clamp(18px,2.6vw,24px);color:#F5F0E6}
-  .osflow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;position:relative}
-  .osflow .node{text-align:center;position:relative;padding:0 4px}
-  .osflow .node .circ{width:60px;height:60px;margin:0 auto;border-radius:50%;border:1px solid rgba(240,234,221,.3);display:grid;place-items:center;color:var(--brass-soft);font-size:26px;background:rgba(255,255,255,.03)}
-  .osflow .node h4{font-size:14px;margin-top:14px;color:#F0EADD;font-weight:600;font-family:var(--f-disp)}
-  .osflow .node p{font-size:11.5px;color:#AFBBB1;margin-top:6px;line-height:1.6}
-  .osflow .node:not(:last-child)::after{content:"";position:absolute;top:30px;right:-4px;width:8px;height:8px;border-top:1.5px solid var(--brass);border-right:1.5px solid var(--brass);transform:rotate(45deg)}
+  .osteps{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 14px}
+  .ostep{text-align:center;position:relative;padding:0 4px}
+  .ostep .num{display:block;font-family:var(--f-serif);font-style:italic;font-size:15px;color:var(--brass-soft);margin-bottom:8px}
+  .ostep .circ{width:58px;height:58px;margin:0 auto;border-radius:50%;border:1px solid rgba(240,234,221,.3);display:grid;place-items:center;color:var(--brass-soft);font-size:25px;background:rgba(255,255,255,.03)}
+  .ostep h4{font-size:13.5px;margin-top:13px;color:#F0EADD;font-weight:600;font-family:var(--f-disp);line-height:1.45}
+  .ostep p{font-size:11.5px;color:#AFBBB1;margin-top:7px;line-height:1.62}
+  .osnote{margin-top:30px;text-align:center;font-size:12px;color:#AFBBB1;letter-spacing:.04em}
 
   .range-tags{display:flex;flex-wrap:wrap;gap:11px;justify-content:center;margin-top:40px}
   .range-tags span{font-family:var(--f-disp);font-size:clamp(14px,2vw,18px);color:var(--green);border:1px solid var(--line);background:var(--paper);padding:11px 22px;border-radius:2px;letter-spacing:.05em}
@@ -250,20 +251,6 @@
   .issue-arrow{margin-top:34px;text-align:center;font-family:var(--f-disp);font-size:clamp(15px,2.3vw,21px);color:var(--ink);line-height:1.7;background:color-mix(in srgb,var(--green) 7%,transparent);border:1px solid var(--line);border-radius:4px;padding:clamp(20px,3vw,26px)}
   .issue-arrow b{color:var(--green);font-weight:600}
 
-  /* ===== STRATEGY (戦略プロセス) ===== */
-  .strat{background:var(--green-deep);color:#EDE7DB}
-  .strat .eyebrow{color:var(--brass-soft)}
-  .strat .eyebrow::before,.strat .eyebrow::after{background:var(--brass)}
-  .strat .sec-title{color:#F5F0E6}
-  .strat .sec-lead{color:#B9C4BB}
-  .strat-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(46px,6vw,58px);position:relative}
-  .snode{text-align:center;position:relative;padding:0 6px}
-  .snode .sn{display:block;font-family:var(--f-serif);font-style:italic;font-size:20px;color:var(--brass-soft);margin-bottom:14px}
-  .snode .scirc{width:76px;height:76px;margin:0 auto;border-radius:50%;border:1px solid rgba(240,234,221,.28);background:rgba(255,255,255,.03);display:grid;place-items:center;color:var(--brass-soft);font-size:32px}
-  .snode h3{font-size:16.5px;margin-top:18px;color:#F0EADD}
-  .snode p{font-size:12.5px;color:#AFBBB1;margin-top:9px;line-height:1.7}
-  .snode:not(:last-child)::after{content:"";position:absolute;top:56px;right:-6px;width:9px;height:9px;border-top:1.6px solid var(--brass);border-right:1.6px solid var(--brass);transform:rotate(45deg)}
-
   /* ===== PLAN BOARD (提案方法) ===== */
   .plan{background:var(--sand)}
   .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(44px,6vw,56px)}
@@ -340,15 +327,12 @@
     .about-flex,.area-grid,.contact-grid{grid-template-columns:1fr}
     .feature-row{grid-template-columns:1fr 1fr}
     .pillars{grid-template-columns:1fr}
-    .osflow{grid-template-columns:1fr 1fr 1fr;gap:26px 8px}
-    .osflow .node:not(:last-child)::after{display:none}
+    .osteps{grid-template-columns:1fr 1fr 1fr 1fr;gap:26px 10px}
     .timeline{grid-template-columns:1fr 1fr 1fr;gap:26px 10px}
     .tstep:not(:last-child)::before{display:none}
     .cat-grid{grid-template-columns:1fr 1fr}
     .about-fig{max-width:440px;margin:0 auto}
     .issue-grid,.plan-grid{grid-template-columns:1fr}
-    .strat-flow{grid-template-columns:1fr 1fr;gap:38px 12px}
-    .strat .snode:not(:last-child)::after{display:none}
   }
   @media (max-width:600px){
     body{font-size:15.5px}
@@ -356,7 +340,7 @@
     .hstat.divide{border-left:0;padding-left:0;border-top:1px solid rgba(244,241,233,.22);padding-top:20px}
     .hstat{display:flex;align-items:baseline;gap:16px}
     .hstat .cap{margin-top:0}
-    .feature-row,.timeline,.frow,.cat-grid,.osflow,.region-list,.strat-flow{grid-template-columns:1fr}
+    .feature-row,.timeline,.frow,.cat-grid,.osteps,.region-list{grid-template-columns:1fr}
     .about-fig .float{left:8px}
     .mcta{display:flex}
     footer{padding-bottom:92px}.contact{padding-bottom:116px}
@@ -513,16 +497,20 @@
           <p>選定・代理購入・組立設置・ゴミ処理・撮影まで対応。すぐ運営を始められる状態でお引き渡し。</p></div>
       </div>
 
-      <!-- one-stop icon flow -->
+      <!-- サービス工程 8 steps -->
       <div class="onestop reveal">
-        <div class="oshead"><span class="tag">ONE STOP</span><h3>企画から撮影まで、窓口ひとつ。</h3></div>
-        <div class="osflow">
-          <div class="node"><div class="circ"><svg class="ic"><use href="#i-compass"/></svg></div><h4>企画・設計</h4><p>コンセプトと配色を計画</p></div>
-          <div class="node"><div class="circ"><svg class="ic"><use href="#i-doc"/></svg></div><h4>商品選定</h4><p>家具・家電・備品を選ぶ</p></div>
-          <div class="node"><div class="circ"><svg class="ic"><use href="#i-cart"/></svg></div><h4>代理購入</h4><p>手配・納品を一括で</p></div>
-          <div class="node"><div class="circ"><svg class="ic"><use href="#i-tools"/></svg></div><h4>設営・組立</h4><p>設置・ゴミ処理まで</p></div>
-          <div class="node"><div class="circ"><svg class="ic"><use href="#i-camera"/></svg></div><h4>撮影</h4><p>掲載用の写真を撮影</p></div>
+        <div class="oshead"><span class="tag">ONE STOP</span><h3>相談から撮影まで、8つの工程を窓口ひとつで。</h3></div>
+        <div class="osteps">
+          <div class="ostep"><span class="num">01</span><div class="circ"><svg class="ic"><use href="#i-chat"/></svg></div><h4>ヒアリング</h4><p>物件情報・ターゲット・予算・運営方針を確認</p></div>
+          <div class="ostep"><span class="num">02</span><div class="circ"><svg class="ic"><use href="#i-ruler"/></svg></div><h4>現地調査・採寸</h4><p>間取り・設備・搬入条件を現地で確認</p></div>
+          <div class="ostep"><span class="num">03</span><div class="circ"><svg class="ic"><use href="#i-compass"/></svg></div><h4>リサーチ・分析</h4><p>立地・競合・宿泊相場を調査し、ターゲットと利用シーンを見極める</p></div>
+          <div class="ostep"><span class="num">04</span><div class="circ"><svg class="ic"><use href="#i-badge"/></svg></div><h4>コンセプト立案</h4><p>差別化ポイントを軸に「選ばれるお部屋」を企画</p></div>
+          <div class="ostep"><span class="num">05</span><div class="circ"><svg class="ic"><use href="#i-space"/></svg></div><h4>空間デザイン設計</h4><p>テイスト・配色・定員に合わせ空間全体をプランニング</p></div>
+          <div class="ostep"><span class="num">06</span><div class="circ"><svg class="ic"><use href="#i-doc"/></svg></div><h4>内装素材・商品選定・見積</h4><p>内装素材・家具・家電・照明・リネン・備品をリスト化</p></div>
+          <div class="ostep"><span class="num">07</span><div class="circ"><svg class="ic"><use href="#i-tools"/></svg></div><h4>施工・購入代行・設営</h4><p>施工・代理購入・組立・レイアウト・ゴミ処理まで</p></div>
+          <div class="ostep"><span class="num">08</span><div class="circ"><svg class="ic"><use href="#i-camera"/></svg></div><h4>撮影・引き渡し</h4><p>リスティング用撮影を行い、開業できる状態で引き渡し</p></div>
         </div>
+        <p class="osnote">※ 必要な工程だけを組み合わせることも可能です。</p>
       </div>
 
       <div class="head-center reveal" style="margin-top:clamp(48px,6vw,72px)">
@@ -532,23 +520,6 @@
       </div>
       <div class="range-tags reveal">
         <span>和風<small>Japanese</small></span><span>北欧<small>Nordic</small></span><span>ナチュラル<small>Natural</small></span><span>モダン<small>Modern</small></span><span>ヴィンテージ<small>Vintage</small></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 戦略プロセス ===== -->
-  <section class="sec strat" id="strategy">
-    <div class="wrap">
-      <div class="head-center reveal">
-        <p class="eyebrow center">Strategy</p>
-        <h2 class="sec-title">"選ばれる理由"は、<br>設計できる。</h2>
-        <p class="sec-lead">ただ家具を並べるのではなく、立地とゲストを読み解いて「勝てる部屋」を組み立てます。企画の裏側には、こんな思考のステップがあります。</p>
-      </div>
-      <div class="strat-flow">
-        <div class="snode reveal"><span class="sn">01</span><div class="scirc"><svg class="ic"><use href="#i-compass"/></svg></div><h3>調査する</h3><p>立地・周辺の競合施設・宿泊相場をリサーチ</p></div>
-        <div class="snode reveal"><span class="sn">02</span><div class="scirc"><svg class="ic"><use href="#i-users"/></svg></div><h3>ターゲットを考える</h3><p>どんな人が、どう使うか（利用シーン）を見極める</p></div>
-        <div class="snode reveal"><span class="sn">03</span><div class="scirc"><svg class="ic"><use href="#i-badge"/></svg></div><h3>差別化する</h3><p>競合との違いから「選ばれる理由」を決める</p></div>
-        <div class="snode reveal"><span class="sn">04</span><div class="scirc"><svg class="ic"><use href="#i-space"/></svg></div><h3>空間を企画する</h3><p>コンセプトを、配色・定員・生活動線まで落とし込む</p></div>
       </div>
     </div>
   </section>
@@ -852,11 +823,11 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
 
             <!-- pins: 北海道 / 東京・神奈川 / 河口湖 / 京都・大阪 / 福岡 / 沖縄(inset) -->
             <g>
-              <circle class="pin-ring" cx="700" cy="120" r="9"/><circle class="pin" cx="700" cy="120" r="9"/>
-              <circle class="pin-ring" cx="655" cy="486" r="9"/><circle class="pin" cx="655" cy="486" r="9"/>
-              <circle class="pin-ring" cx="605" cy="512" r="9"/><circle class="pin" cx="605" cy="512" r="9"/>
-              <circle class="pin-ring" cx="560" cy="558" r="9"/><circle class="pin" cx="560" cy="558" r="9"/>
-              <circle class="pin-ring" cx="300" cy="716" r="9"/><circle class="pin" cx="300" cy="716" r="9"/>
+              <circle class="pin-ring" cx="805" cy="125" r="9"/><circle class="pin" cx="805" cy="125" r="9"/>
+              <circle class="pin-ring" cx="685" cy="652" r="9"/><circle class="pin" cx="685" cy="652" r="9"/>
+              <circle class="pin-ring" cx="632" cy="676" r="9"/><circle class="pin" cx="632" cy="676" r="9"/>
+              <circle class="pin-ring" cx="505" cy="748" r="9"/><circle class="pin" cx="505" cy="748" r="9"/>
+              <circle class="pin-ring" cx="360" cy="775" r="9"/><circle class="pin" cx="360" cy="775" r="9"/>
               <rect class="okinawa-inset" x="70" y="838" width="150" height="120" rx="10"/>
               <circle class="pin-ring" cx="120" cy="898" r="9"/><circle class="pin" cx="120" cy="898" r="9"/>
               <text class="okinawa-label" x="145" y="903" font-size="34" font-weight="700">沖縄</text>
