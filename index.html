@@ -239,6 +239,44 @@
   .works .btn-ghost{color:#F4F1E9;border-color:rgba(244,241,233,.45)}
   .works .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.06)}
 
+  /* ===== ISSUE (課題提起) ===== */
+  .issue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(44px,6vw,56px)}
+  .icard{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:34px 28px 32px;position:relative;transition:transform .25s,box-shadow .25s,border-color .25s}
+  .icard:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--brass-soft)}
+  .icard .inum{font-family:var(--f-serif);font-style:italic;font-size:26px;color:var(--brass-soft);line-height:1}
+  .icard .iico{width:54px;height:54px;border-radius:50%;background:color-mix(in srgb,var(--brass) 13%,transparent);display:grid;place-items:center;color:var(--brass);font-size:25px;margin-top:14px}
+  .icard h3{font-size:18px;margin-top:18px;color:var(--ink);letter-spacing:.02em}
+  .icard p{margin-top:12px;color:var(--ink-soft);font-size:13.5px;line-height:1.85}
+  .issue-arrow{margin-top:34px;text-align:center;font-family:var(--f-disp);font-size:clamp(15px,2.3vw,21px);color:var(--ink);line-height:1.7;background:color-mix(in srgb,var(--green) 7%,transparent);border:1px solid var(--line);border-radius:4px;padding:clamp(20px,3vw,26px)}
+  .issue-arrow b{color:var(--green);font-weight:600}
+
+  /* ===== STRATEGY (戦略プロセス) ===== */
+  .strat{background:var(--green-deep);color:#EDE7DB}
+  .strat .eyebrow{color:var(--brass-soft)}
+  .strat .eyebrow::before,.strat .eyebrow::after{background:var(--brass)}
+  .strat .sec-title{color:#F5F0E6}
+  .strat .sec-lead{color:#B9C4BB}
+  .strat-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(46px,6vw,58px);position:relative}
+  .snode{text-align:center;position:relative;padding:0 6px}
+  .snode .sn{display:block;font-family:var(--f-serif);font-style:italic;font-size:20px;color:var(--brass-soft);margin-bottom:14px}
+  .snode .scirc{width:76px;height:76px;margin:0 auto;border-radius:50%;border:1px solid rgba(240,234,221,.28);background:rgba(255,255,255,.03);display:grid;place-items:center;color:var(--brass-soft);font-size:32px}
+  .snode h3{font-size:16.5px;margin-top:18px;color:#F0EADD}
+  .snode p{font-size:12.5px;color:#AFBBB1;margin-top:9px;line-height:1.7}
+  .snode:not(:last-child)::after{content:"";position:absolute;top:56px;right:-6px;width:9px;height:9px;border-top:1.6px solid var(--brass);border-right:1.6px solid var(--brass);transform:rotate(45deg)}
+
+  /* ===== PLAN BOARD (提案方法) ===== */
+  .plan{background:var(--sand)}
+  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(44px,6vw,56px)}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+  .pcard:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--brass-soft)}
+  .pcard .pswatch{display:flex;height:98px}
+  .pcard .pswatch span{flex:1}
+  .pcard .ptype{font-family:var(--f-body);font-weight:700;letter-spacing:.16em;color:var(--brass);font-size:12px;margin:20px 24px 0}
+  .pcard h3{font-family:var(--f-serif);font-weight:600;font-size:25px;color:var(--ink);margin:4px 24px 0;letter-spacing:.02em}
+  .pcard p{margin:13px 24px 26px;color:var(--ink-soft);font-size:13.5px;line-height:1.85}
+  .plan-note{margin-top:32px;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px;color:var(--ink-soft);font-size:13.5px;line-height:1.6}
+  .plan-note .ic{font-size:18px;color:var(--green);flex:none}
+
   /* ===== band ===== */
   .band{position:relative;padding:clamp(80px,12vw,150px) 0;color:#F4F1E9;text-align:center;isolation:isolate;overflow:hidden}
   .band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
@@ -308,6 +346,9 @@
     .tstep:not(:last-child)::before{display:none}
     .cat-grid{grid-template-columns:1fr 1fr}
     .about-fig{max-width:440px;margin:0 auto}
+    .issue-grid,.plan-grid{grid-template-columns:1fr}
+    .strat-flow{grid-template-columns:1fr 1fr;gap:38px 12px}
+    .strat .snode:not(:last-child)::after{display:none}
   }
   @media (max-width:600px){
     body{font-size:15.5px}
@@ -315,7 +356,7 @@
     .hstat.divide{border-left:0;padding-left:0;border-top:1px solid rgba(244,241,233,.22);padding-top:20px}
     .hstat{display:flex;align-items:baseline;gap:16px}
     .hstat .cap{margin-top:0}
-    .feature-row,.timeline,.frow,.cat-grid,.osflow,.region-list{grid-template-columns:1fr}
+    .feature-row,.timeline,.frow,.cat-grid,.osflow,.region-list,.strat-flow{grid-template-columns:1fr}
     .about-fig .float{left:8px}
     .mcta{display:flex}
     footer{padding-bottom:92px}.contact{padding-bottom:116px}
@@ -354,6 +395,7 @@
     <nav class="nav-links" aria-label="グローバルナビ">
       <a href="#about">当サービス</a>
       <a href="#service">サービス</a>
+      <a href="#plan">提案方法</a>
       <a href="#area">対応エリア</a>
       <a href="#flow">ご依頼の流れ</a>
       <a href="#faq">FAQ</a>
@@ -419,6 +461,38 @@
     </div>
   </section>
 
+  <!-- ===== 課題提起 ===== -->
+  <section class="sec issue" id="issue">
+    <div class="wrap">
+      <div class="head-center reveal">
+        <p class="eyebrow center">The challenge</p>
+        <h2 class="sec-title">家具を置くだけでは、<br>"予約される部屋"にはならない。</h2>
+        <p class="sec-lead">写真を見た瞬間に魅力が伝わり、滞在中に不便がなく、予算とスケジュールを守って開業できる。この3つが揃って、はじめて「選ばれる部屋」になります。</p>
+      </div>
+      <div class="issue-grid">
+        <article class="icard reveal">
+          <span class="inum">01</span>
+          <div class="iico"><svg class="ic"><use href="#i-camera"/></svg></div>
+          <h3>写真で魅力が伝わらない</h3>
+          <p>統一感がなく、OTA（予約サイト）の一覧画面で他の物件に埋もれてしまう。サムネイルの一枚目で、選ばれない。</p>
+        </article>
+        <article class="icard reveal">
+          <span class="inum">02</span>
+          <div class="iico"><svg class="ic"><use href="#i-cart"/></svg></div>
+          <h3>調達に時間がかかる</h3>
+          <p>家具・家電・備品を一つずつ探し、価格と納期を個別に管理。手間もリスクも大きく、開業準備が進まない。</p>
+        </article>
+        <article class="icard reveal">
+          <span class="inum">03</span>
+          <div class="iico"><svg class="ic"><use href="#i-tools"/></svg></div>
+          <h3>設営後も開業できない</h3>
+          <p>納品しても、組立・ゴミ処理・撮影が残る。掲載写真が用意できず、運営スタートが後ろ倒しになる。</p>
+        </article>
+      </div>
+      <p class="issue-arrow reveal">ミンパクインテリアなら、<b>企画・選定・購入・設営・撮影まで、まるごとワンストップ。</b></p>
+    </div>
+  </section>
+
   <!-- ===== サービス紹介 ===== -->
   <section class="sec svc" id="service">
     <div class="wrap">
@@ -459,6 +533,55 @@
       <div class="range-tags reveal">
         <span>和風<small>Japanese</small></span><span>北欧<small>Nordic</small></span><span>ナチュラル<small>Natural</small></span><span>モダン<small>Modern</small></span><span>ヴィンテージ<small>Vintage</small></span>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== 戦略プロセス ===== -->
+  <section class="sec strat" id="strategy">
+    <div class="wrap">
+      <div class="head-center reveal">
+        <p class="eyebrow center">Strategy</p>
+        <h2 class="sec-title">"選ばれる理由"は、<br>設計できる。</h2>
+        <p class="sec-lead">ただ家具を並べるのではなく、立地とゲストを読み解いて「勝てる部屋」を組み立てます。企画の裏側には、こんな思考のステップがあります。</p>
+      </div>
+      <div class="strat-flow">
+        <div class="snode reveal"><span class="sn">01</span><div class="scirc"><svg class="ic"><use href="#i-compass"/></svg></div><h3>調査する</h3><p>立地・周辺の競合施設・宿泊相場をリサーチ</p></div>
+        <div class="snode reveal"><span class="sn">02</span><div class="scirc"><svg class="ic"><use href="#i-users"/></svg></div><h3>ターゲットを考える</h3><p>どんな人が、どう使うか（利用シーン）を見極める</p></div>
+        <div class="snode reveal"><span class="sn">03</span><div class="scirc"><svg class="ic"><use href="#i-badge"/></svg></div><h3>差別化する</h3><p>競合との違いから「選ばれる理由」を決める</p></div>
+        <div class="snode reveal"><span class="sn">04</span><div class="scirc"><svg class="ic"><use href="#i-space"/></svg></div><h3>空間を企画する</h3><p>コンセプトを、配色・定員・生活動線まで落とし込む</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 提案方法 / プランボード ===== -->
+  <section class="sec plan" id="plan">
+    <div class="wrap">
+      <div class="head-center reveal">
+        <p class="eyebrow center">Our proposal</p>
+        <h2 class="sec-title">完成イメージを、<br>見てから決められる。</h2>
+        <p class="sec-lead">レイアウトと商品を一覧化したプランボードで、「何を・どこに・なぜ置くか」を共有。テイスト違いの複数案から、物件に合う方向性をお選びいただけます。</p>
+      </div>
+      <div class="plan-grid">
+        <article class="pcard reveal">
+          <div class="pswatch"><span style="background:#A9835A"></span><span style="background:#E7DCC8"></span><span style="background:#7C6A52"></span></div>
+          <div class="ptype">A TYPE</div>
+          <h3>Woody × Beige</h3>
+          <p>木の温もりとベージュで、やわらかく落ち着く王道ナチュラル。幅広いゲスト層に好まれる安定感のある方向性。</p>
+        </article>
+        <article class="pcard reveal">
+          <div class="pswatch"><span style="background:#C0653F"></span><span style="background:#E9C567"></span><span style="background:#EDE3D2"></span></div>
+          <div class="ptype">B TYPE</div>
+          <h3>Clay × Yellow</h3>
+          <p>クレイとイエローで、明るく気分の上がる空間。写真映えを重視し、一覧画面で"手が止まる"サムネイルへ。</p>
+        </article>
+        <article class="pcard reveal">
+          <div class="pswatch"><span style="background:#B4623E"></span><span style="background:#3E5A6B"></span><span style="background:#D7CBB8"></span></div>
+          <div class="ptype">C TYPE</div>
+          <h3>Clay × Blue</h3>
+          <p>クレイとブルーで、落ち着きと個性を両立。他物件と一線を画す、差別化を狙った上質な方向性。</p>
+        </article>
+      </div>
+      <p class="plan-note reveal"><svg class="ic"><use href="#i-doc"/></svg>フロア別の提案（FLOOR PLAN）にも対応。イメージ共有後の発注もスムーズです。</p>
     </div>
   </section>
 
@@ -920,7 +1043,7 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
       <div class="foot-meta">
         <p><b>ミンパクインテリア</b><br>民泊・宿泊施設特化のインテリアプロデュース</p>
         <p style="margin-top:12px">運営：<b>合同会社キャラノミクス</b>（Charanomics）<br>対応エリア：全国（北海道・東京・神奈川・大阪・京都・福岡・沖縄 ほか）</p>
-        <nav class="foot-nav" aria-label="フッターナビ"><a href="#about">当サービス</a><a href="#service">サービス</a><a href="#area">対応エリア</a><a href="#flow">ご依頼の流れ</a><a href="#faq">FAQ</a><a href="#works">実績</a><a href="#contact">お問い合わせ</a></nav>
+        <nav class="foot-nav" aria-label="フッターナビ"><a href="#about">当サービス</a><a href="#service">サービス</a><a href="#plan">提案方法</a><a href="#area">対応エリア</a><a href="#flow">ご依頼の流れ</a><a href="#faq">FAQ</a><a href="#works">実績</a><a href="#contact">お問い合わせ</a></nav>
       </div>
     </div>
     <div class="foot-bottom"><span>© 2026 ミンパクインテリア / 合同会社キャラノミクス</span><span>民泊 インテリア｜家具家電一式｜内装コーディネート｜全国対応</span></div>
