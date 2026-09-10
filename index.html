@@ -346,9 +346,11 @@
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  .sp-br{display:none}
 
   @media (max-width:960px){
     .nav-links,.nav .btn-primary{display:none}
+    .nav{justify-content:center}
     .about-flex,.area-grid,.contact-grid{grid-template-columns:1fr}
     .feature-row{grid-template-columns:1fr 1fr}
     .pillars{grid-template-columns:1fr}
@@ -371,6 +373,9 @@
     footer{padding-bottom:92px}.contact{padding-bottom:116px}
     .works-count{text-align:left}
     .foot-tagline{white-space:normal}
+    .sp-br{display:inline}
+    .issue .sec-title{font-size:clamp(15px,5.2vw,19px)}
+    .onestop .oshead h3{font-size:16px}
   }
 </style>
 
@@ -525,7 +530,7 @@
 
       <!-- サービス工程 8 steps -->
       <div class="onestop reveal">
-        <div class="oshead"><span class="tag">ONE STOP</span><h3>相談から撮影まで、8つの工程を窓口ひとつで。</h3></div>
+        <div class="oshead"><span class="tag">ONE STOP</span><h3>相談から撮影まで、<br class="sp-br">8つの工程を窓口ひとつで。</h3></div>
         <div class="osteps">
           <div class="ostep"><span class="num">01</span><div class="circ"><svg class="ic"><use href="#i-chat"/></svg></div><h4>ヒアリング</h4><p>物件情報・ターゲット・予算・運営方針を確認</p></div>
           <div class="ostep"><span class="num">02</span><div class="circ"><svg class="ic"><use href="#i-ruler"/></svg></div><h4>現地調査・採寸</h4><p>間取り・設備・搬入条件を現地で確認</p></div>
@@ -934,7 +939,7 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
       <div class="works-top">
         <div class="reveal">
           <p class="eyebrow">Works</p>
-          <h2 class="sec-title">目的に合わせた、6つの部屋づくり。</h2>
+          <h2 class="sec-title">目的に合わせた、<br class="sp-br">6つの部屋づくり。</h2>
           <p class="sec-lead">同じ「民泊」でも、狙うゲストで最適な部屋は変わります。<br>目的別に、選ばれる空間を設計してきました。</p>
         </div>
         <div class="works-count reveal"><div class="n">3,000<span style="font-size:.5em">+</span></div><div class="t">Rooms produced</div></div>
