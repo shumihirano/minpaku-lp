@@ -1114,6 +1114,42 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
   var qas=document.querySelectorAll('.qa');
   qas.forEach(function(d){d.addEventListener('toggle',function(){if(d.open){qas.forEach(function(o){if(o!==d)o.open=false;});}});});
+  /* ===== 流入元の記録（着地時のURL・参照元をタブ単位で保持） ===== */
+  var SRC_KEY='mi_lp_src';
+  (function captureSource(){
+    try{
+      if(sessionStorage.getItem(SRC_KEY))return;
+      sessionStorage.setItem(SRC_KEY,JSON.stringify({landing:location.href,ref:document.referrer||'',ts:Date.now()}));
+    }catch(e){}
+  })();
+  function sourceLines(){
+    var d=null;
+    try{d=JSON.parse(sessionStorage.getItem(SRC_KEY)||'null');}catch(e){}
+    if(!d)d={landing:location.href,ref:document.referrer||'',ts:Date.now()};
+    var q={},qs=(d.landing.split('?')[1]||'').split('#')[0];
+    if(qs)qs.split('&').forEach(function(kv){var i=kv.indexOf('='),k=i<0?kv:kv.slice(0,i),v=i<0?'':kv.slice(i+1);
+      if(k){try{q[decodeURIComponent(k)]=decodeURIComponent(v.replace(/\+/g,' '));}catch(e){q[k]=v;}}});
+    var out=[],hits=[];
+    ['gclid','wbraid','gbraid','msclkid','yclid','fbclid','utm_source','utm_medium','utm_campaign','utm_term','utm_content','matchtype','device','network','campaignid','adgroupid','creative','placement'].forEach(function(k){
+      if(q[k])hits.push(k+'='+q[k]);
+    });
+    var via;
+    if(q.gclid||q.wbraid||q.gbraid)via='Google広告';
+    else if(q.msclkid)via='Microsoft広告';
+    else if(q.utm_source)via=q.utm_source+(q.utm_medium?' / '+q.utm_medium:'');
+    else if(!d.ref)via='直接アクセス（ブックマーク・URL直打ちなど）';
+    else if(d.ref.indexOf(location.hostname)>-1)via='サイト内リンク';
+    else via='外部サイトからのリンク';
+    out.push('流入元：'+via);
+    if(q.utm_term)out.push('検索キーワード：'+q.utm_term);
+    out.push('広告パラメータ：'+(hits.length?hits.join(' / '):'なし'));
+    out.push('着地ページ：'+d.landing);
+    out.push('参照元：'+(d.ref||'なし'));
+    var t=new Date(d.ts);
+    out.push('初回アクセス：'+t.getFullYear()+'/'+('0'+(t.getMonth()+1)).slice(-2)+'/'+('0'+t.getDate()).slice(-2)+' '+('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2));
+    out.push('画面幅：'+window.innerWidth+'px');
+    return out;
+  }
   var CF7_ENDPOINT='https://minpaku-interior.com/wp-json/contact-form-7/v1/contact-forms/93/feedback';
   var form=document.getElementById('lpform');
   var errBox=document.getElementById('formErr');
@@ -1136,8 +1172,8 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
     if(val('plan'))extra.push('間取り・広さ：'+val('plan'));
     if(val('area'))extra.push('物件エリア：'+val('area'));
     var body=val('msg');
-    if(extra.length)body+='\n\n---\n'+extra.join('\n');
-    body+='\n\n（送信元：広告用LP /lp/）';
+    if(extra.length)body+='\n\n----------\n'+extra.join('\n');
+    body+='\n\n----------\n【流入情報（自動記録）】\n'+sourceLines().join('\n');
     var fd=new FormData();
     fd.append('_wpcf7','93');
     fd.append('_wpcf7_version','5.1.1');
