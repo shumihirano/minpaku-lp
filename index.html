@@ -1176,7 +1176,6 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
     if(val('area'))extra.push('物件エリア：'+val('area'));
     var body=val('msg');
     if(extra.length)body+='\n\n----------\n'+extra.join('\n');
-    body+='\n\n----------\n［受付記録］\n'+sourceLines().join('\n');
     var fd=new FormData();
     fd.append('_wpcf7','93');
     fd.append('_wpcf7_version','5.1.1');
@@ -1189,6 +1188,7 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
     fd.append('text-597','');
     fd.append('text-598',val('area'));
     fd.append('your-message',body);
+    fd.append('lp-ref','----------\n［受付記録］\n'+sourceLines().join('\n'));
     fd.append('cf-turnstile-response',token);
     submitBtn.disabled=true;submitBtn.innerHTML='送信中…';
     fetch(CF7_ENDPOINT,{method:'POST',body:fd})
