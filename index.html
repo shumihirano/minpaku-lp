@@ -316,6 +316,7 @@ if(location.hostname==='minpaku-interior.com'){(function(w,d,s,l,i){w[l].push({'
   .field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--green) 50%),linear-gradient(135deg,var(--green) 50%,transparent 50%);background-position:calc(100% - 20px) center,calc(100% - 15px) center;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
   .form-actions .btn-primary{width:100%}
   .form-actions .btn-primary[disabled]{opacity:.55;cursor:progress}
+  .form-note .pv-link{color:var(--green);text-underline-offset:3px}
   .cf-turnstile{margin:2px 0 18px;min-height:65px}
   .form-err{display:none;margin:0 0 16px;padding:13px 15px;border-radius:4px;background:#FBEAEA;border:1px solid #E0B4B4;color:#8C2F2F;font-size:13.5px;line-height:1.8}
   .form-err.show{display:block}
@@ -1063,7 +1064,7 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
             <div class="cf-turnstile" data-sitekey="0x4AAAAAAEG7top_klwmezuj" data-theme="light" data-language="auto"></div>
             <p class="form-err" id="formErr" role="alert"></p>
             <div class="form-actions"><button type="submit" class="btn btn-primary btn-lg">この内容で相談する（無料）</button>
-              <p class="form-note">送信いただいた内容をもとに、担当より折り返しご連絡します。<br>いただいた情報はご相談対応の目的にのみ使用します。</p></div>
+              <p class="form-note">送信いただいた内容をもとに、担当より折り返しご連絡します。<br>送信をもって<a href="#privacy" class="pv-link">個人情報の取り扱い</a>に同意いただいたものとみなします。</p></div>
           </form>
           <div class="form-done" id="formDone" role="status" aria-live="polite">
             <div class="chk" aria-hidden="true"></div><h3>送信ありがとうございます</h3>
@@ -1074,9 +1075,10 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
             <div class="pv-body">
               <p>お問い合わせフォームでは、お名前・会社名・メールアドレス・電話番号・物件情報・ご相談内容などの個人情報をお預かりします。</p>
               <ul>
-                <li><b>利用目的</b>：お問い合わせ・ご相談・お見積もりへの対応、およびご連絡のために利用します。</li>
+                <li><b>利用目的</b>：お問い合わせ・ご相談・お見積もりへの対応およびご連絡のほか、お問い合わせ経路の把握による広告効果の測定・サービス品質の向上のために利用します。</li>
                 <li><b>第三者提供</b>：法令に基づく場合を除き、ご本人の同意なく第三者へ提供することはありません。</li>
                 <li><b>管理</b>：取得した情報は適切に管理し、利用目的の達成後は速やかに廃棄します。</li>
+                <li><b>アクセス解析・広告配信</b>：本ページではGoogleアナリティクス等のツールを利用し、Cookieを用いて閲覧状況を収集します。お問い合わせの際には、どのページ・どの経路からアクセスされたかの記録を受付内容とあわせて保存します。これらに氏名などを特定する情報は含まれません。Cookieはブラウザの設定で無効にできます。</li>
                 <li><b>事業者</b>：合同会社キャラノミクス（ミンパクインテリア運営）／東京都港区高輪4丁目23-6-708</li>
                 <li><b>お問い合わせ窓口</b>：本フォーム・LINE</li>
               </ul>
@@ -1112,6 +1114,8 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
   onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  var pvLink=document.querySelector('.pv-link');
+  if(pvLink)pvLink.addEventListener('click',function(){var d=document.getElementById('privacy');if(d)d.open=true;});
   var qas=document.querySelectorAll('.qa');
   qas.forEach(function(d){d.addEventListener('toggle',function(){if(d.open){qas.forEach(function(o){if(o!==d)o.open=false;});}});});
   /* ===== 流入元の記録（着地時のURL・参照元をタブ単位で保持） ===== */
@@ -1140,11 +1144,10 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
     else if(!d.ref)via='直接アクセス（ブックマーク・URL直打ちなど）';
     else if(d.ref.indexOf(location.hostname)>-1)via='サイト内リンク';
     else via='外部サイトからのリンク';
-    out.push('流入元：'+via);
-    if(q.utm_term)out.push('検索キーワード：'+q.utm_term);
-    out.push('広告パラメータ：'+(hits.length?hits.join(' / '):'なし'));
-    out.push('着地ページ：'+d.landing);
-    out.push('参照元：'+(d.ref||'なし'));
+    out.push('参照元：'+via);
+    if(q.utm_term)out.push('検索語：'+q.utm_term);
+    if(hits.length)out.push('参照ID：'+hits.join(' / '));
+    out.push('受付ページ：'+d.landing.split('?')[0]);
     var t=new Date(d.ts);
     out.push('初回アクセス：'+t.getFullYear()+'/'+('0'+(t.getMonth()+1)).slice(-2)+'/'+('0'+t.getDate()).slice(-2)+' '+('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2));
     out.push('画面幅：'+window.innerWidth+'px');
@@ -1173,7 +1176,7 @@ l3 129 -35 -22 c-19 -11 -41 -21 -50 -21 -8 0 -35 20 -59 44 -33 34 -52 45
     if(val('area'))extra.push('物件エリア：'+val('area'));
     var body=val('msg');
     if(extra.length)body+='\n\n----------\n'+extra.join('\n');
-    body+='\n\n----------\n【流入情報（自動記録）】\n'+sourceLines().join('\n');
+    body+='\n\n----------\n［受付記録］\n'+sourceLines().join('\n');
     var fd=new FormData();
     fd.append('_wpcf7','93');
     fd.append('_wpcf7_version','5.1.1');
